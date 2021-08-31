@@ -1,0 +1,97 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-image: url(../src/TASS_40491553_d_850.jpg);
+  /* background-color: #232e44; */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(8px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #5a00c0;
+  font-size: 15px 32;
+  width: 50%;
+  height: 50x;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.header1 {
+  padding: 15px 32px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+  width: 100%;
+  height: 1500px;
+}
+
+.App-button {
+  background-color: #b1a095;
+  border: none;
+  color: rgb(22, 21, 21);
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+.App-input {
+  background-color: #4b4846;
+  border: none;
+  color: rgb(22, 21, 21);
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+}
+.button-container {
+  width: 15%;
+  height: 100px;
+  text-align: center;
+}
+.input-container {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.input-container1 {
+  width: 100%;
+  height: 75px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.OverviewText4 {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
