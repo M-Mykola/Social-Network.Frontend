@@ -16,12 +16,10 @@ function App() {
         </h1>
         <div className="input-container">
           <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-          {/* <input className="App-input" /> */}
         </div>
 
         <div className="input-container1">
           <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-          {/* <input className="App-input" /> */}
         </div>
 
         <div className="button-container">
