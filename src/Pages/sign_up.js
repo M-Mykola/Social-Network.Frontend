@@ -9,7 +9,6 @@ function Register() {
     let email = '';
     let password = '';
 
-
     const handleChangeName = (event) => {
         name = event.target.value;
         console.log(name)
@@ -75,7 +74,7 @@ function Register() {
                             label="Password"
                             variant="outlined"
                             type="password"
-                            placeholder="Email"
+                            placeholder="Password"
                             name="emailInput"
                             onChange={(e) => handleChangePassword(e)}
                         />
