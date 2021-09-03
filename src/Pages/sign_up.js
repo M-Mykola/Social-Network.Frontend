@@ -1,13 +1,14 @@
 import "../App.css";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 
-function Register(){
-    let name ='';
+function Register() {
+    let name = '';
     let email = '';
     let password = '';
+
 
     const handleChangeName = (event) => {
         name = event.target.value;
@@ -24,20 +25,20 @@ function Register(){
     }
 
     const handleChange = async () => {
-        if (!name || !password || !email ) {
-            alert ("Please enter the fields correctly")
+        if (!name || !password || !email) {
+            alert("Please enter the fields correctly")
         }
-    await axios({
-        url: 'https://app-social-network-1.herokuapp.com/auth/register',
-        data: {
-            name: name,
-            email: email,
-            password: password
-        },
-        method: 'post'
-    },).then(rs => console.log(rs)).catch(e => console.log('error :', e))
-}
-    return(
+        await axios({
+            url: 'https://app-social-network-1.herokuapp.com/auth/register',
+            data: {
+                name: name,
+                email: email,
+                password: password
+            },
+            method: 'post'
+        },).then(rs => console.log(rs)).catch(e => console.log('error :', e))
+    }
+    return (
         <div className="App">
             <header className="App-header">
                 <h1 className="App-heder">
@@ -45,8 +46,8 @@ function Register(){
                         Website
                     </a>
                 </h1>
-                <div className="main-input-container" >
-                    <div className="input-container"  >
+                <div className="main-input-container">
+                    <div className="input-container">
                         <TextField
                             id="outlined-basic1"
                             label="Name"
@@ -57,7 +58,7 @@ function Register(){
                             onChange={(e) => handleChangeName(e)}
                         />
                     </div>
-                    <div className="input-container"  >
+                    <div className="input-container">
                         <TextField
                             id="outlined-basic1"
                             label="Email"
@@ -80,7 +81,8 @@ function Register(){
                         />
                     </div>
                     <div className="button-container-for-up">
-                        <Button type="submit" onClick={handleChange} variant="contained" color="primary" href="#contained-buttons" >
+                        <Button type="submit" onClick={handleChange} variant="contained" color="primary"
+                                href="#contained-buttons">
                             Register
                         </Button>
                     </div>
