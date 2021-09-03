@@ -102,7 +102,7 @@
   min-height: 100vh;
   display: flex;
   align-items: baseline;
-  font-size: calc(2px + 2vmin);
+  font-size: calc(52px + 1vmin);
   color: #b2c9ff87;
   flex-wrap: wrap;
   align-content: center;
@@ -132,4 +132,8 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+}
+.button-container-for-up {
+  height: 100px;
+  text-align: center;
 }

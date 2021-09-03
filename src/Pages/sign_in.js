@@ -18,7 +18,7 @@ function Login() {
              * TODO:
              * Need to add some user friendly message if validation is not path
              */
-            return
+            alert ("Not validation password or email,please try again")
         }
         await axios({
             url: 'http://localhost:3000/auth/login',
