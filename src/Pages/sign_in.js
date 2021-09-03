@@ -8,21 +8,21 @@ function Login() {
     let password = '';
     const handleChangeEmail = (event) => {
         email = event.target.value;
-        console.log('email',email)
     }
     const handleChangePassword = (event) => {
         password = event.target.value
-        console.log('password',password)
     }
     const handleChange = async () => {
-        console.log(email, password)
         if (!password || !email) {
+            /**
+             * TODO:
+             * Need to add some user friendly message if validation is not path
+             */
             return
         }
-        const response = await axios({
+        await axios({
             url: 'http://localhost:3000/auth/login',
             data: {
-
                 email: email,
                 password: password
             },
@@ -38,8 +38,6 @@ function Login() {
                     </a>
                 </h1>
                 <div className="main-input-container" >
-
-
                     <div className="input-container"  >
                         <TextField
                             id="outlined-basic1"
@@ -51,8 +49,6 @@ function Login() {
                             onChange={(e) => handleChangeEmail(e)}
                         />
                     </div>
-
-
                     <div className="input-container">
                         <TextField
                             id="outlined-basic2"
@@ -64,16 +60,13 @@ function Login() {
                             onChange={(e) => handleChangePassword(e)}
                         />
                     </div>
-
                     <div className="button-container">
                         <Button  type="submit" onClick={handleChange} variant="contained" color="primary" href="#contained-buttons" >
                             Send
                         </Button>
                     </div>
-
                 </div>
             </header>
-
         </div>
     );
 }
