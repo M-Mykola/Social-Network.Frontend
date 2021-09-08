@@ -6,6 +6,8 @@ import {
 import Home from "./Pages/home"
 import  Login from './Pages/sign_in'
 import  Register from './Pages/sign_up'
+
+
 function App() {
     return (
         <Router>
@@ -19,5 +21,4 @@ function App() {
         </Router>
     )
 };
-
 export default App;
