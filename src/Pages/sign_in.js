@@ -2,6 +2,9 @@ import '../App.css';
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import axios from 'axios'
+import Footer from "../Components/Footer_component";
+import React from "react";
+
 
 function Login() {
     let email = '';
@@ -65,6 +68,9 @@ function Login() {
                             Send
                         </Button>
                     </div>
+                </div>
+                <div className="App-Footer">
+                    <Footer/>
                 </div>
             </header>
         </div>
