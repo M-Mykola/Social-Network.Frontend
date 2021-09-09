@@ -2,8 +2,10 @@ import "../App.css";
 import React, {useState} from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Validation from "./validation";
-import ApiAxios from "./api";
+import Validation from "../Validation/validation";
+import Footer from "../Components/Footer_component";
+
+import ApiAxios from "../API/api";
 import axios from "axios";
 
 function Register() {
@@ -133,6 +135,9 @@ function Register() {
                             Register
                         </Button>
                     </div>
+                </div>
+                <div className="App-Footer">
+                <Footer/>
                 </div>
             </header>
         </div>
