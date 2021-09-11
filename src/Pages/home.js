@@ -3,7 +3,6 @@ import Button from "@material-ui/core/Button";
 
 function Home() {
     return (
-
         <div>
             <div className="home-text-header">
                 <header className="App-header-home">
@@ -27,8 +26,6 @@ function Home() {
                     individuals that leads to mutual learning and sharing of valuable knowledge (Sorensen, 2009). The
                     most popular social networking websites are Facebook, LinkedIn
                 </p>
-
-
                 <div className="sign-button-container">
 
                     <Button href="sign-in">

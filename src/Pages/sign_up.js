@@ -137,7 +137,7 @@ function Register() {
                     </div>
                 </div>
                 <div className="App-Footer">
-                <Footer/>
+                    <Footer/>
                 </div>
             </header>
         </div>
