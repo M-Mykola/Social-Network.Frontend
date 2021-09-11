@@ -1,5 +1,3 @@
-import ApiAxios from "../API/api";
-
 const Validation = (name, email, password, repeatPassword) => {
     const re = /\S+@\S+\.\S+/
     if (name.length <= 5 || name.length >= 15) {
