@@ -5,6 +5,7 @@ import APISignInRequest from "../API/api"
 import Validation from "../Validation/validation";
 
 function SignInForm() {
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -37,9 +38,11 @@ function SignInForm() {
     const cleanUp = () => {
         setEmailErrorFlag(false);
         setPasswordErrorFlag(false);
+        setEmailErrorMessage('');
+        setPasswordMessage('');
     }
-
     cleanUp()
+
     if (validate.status === "Fail") {
         if (validate.field === 'email') {
             setEmailErrorFlag(true);
