@@ -1,10 +1,12 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import React, {useState} from "react";
-import APISignInRequest from "../API/api"
+import React, {useState, useEffect} from "react";
 import Validation from "../Validation/validation";
+import APISignInRequest from "../API/SignInRequest"
 
-function SignInForm() {
+function SignInForm(props) {
+
+    let name;
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -21,40 +23,40 @@ function SignInForm() {
     const handleChangePassword = (event) => {
         setPassword(event.target.value)
     }
+
     const SignInHandleChange = async () => {
-        const validate = Validation(email, password,)
+        const validate = Validation(email, password)
         console.log(validate)
+        try {
+            const signInResult = await APISignInRequest(email, password);
+            console.log(signInResult.status)
+            if (signInResult.status === 200) {
+                name = signInResult.data.user.name
+                props.func({ status: true, name })
+                return
+            }
 
-
-    //     try {
-    //         const helpers = await APISignInRequest(email, password)
-    //     } catch (e) {
-    //
-    //     }
-    // }
-
-
-
-    const cleanUp = () => {
-        setEmailErrorFlag(false);
-        setPasswordErrorFlag(false);
-        setEmailErrorMessage('');
-        setPasswordMessage('');
-    }
-    cleanUp()
-
-    if (validate.status === "Fail") {
-        if (validate.field === 'email') {
-            setEmailErrorFlag(true);
-            setEmailErrorMessage(validate.errorMessage);
+        } catch (e) {
+            console.error(e)
         }
-        if (validate.field === 'password') {
-            setPasswordErrorFlag(true);
-            setPasswordMessage(validate.errorMessage);
+        const cleanUp = () => {
+            setEmailErrorFlag(false);
+            setPasswordErrorFlag(false);
+            setEmailErrorMessage('');
+            setPasswordMessage('');
+        }
+        cleanUp()
+        if (validate.status === "Fail") {
+            if (validate.field === 'email') {
+                setEmailErrorFlag(true);
+                setEmailErrorMessage(validate.errorMessage);
+            }
+            if (validate.field === 'password') {
+                setPasswordErrorFlag(true);
+                setPasswordMessage(validate.errorMessage);
+            }
         }
     }
-}
-
     return (
         <div className="main-input-container">
             <div className="input-container">

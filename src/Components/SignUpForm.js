@@ -2,7 +2,10 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import React, {useState} from "react";
 import Validation from "../Validation/validation";
-import APISignUpRequest from "../API/api"
+import APISignUpRequest from "../API/SignUpRequest"
+
+
+
 
 function SignUpForm (props) {
 
@@ -36,18 +39,16 @@ function SignUpForm (props) {
     }
     const handleChange = async () => {
         const validate = Validation(name, email, password, repeatPassword)
-        console.log(validate)
         try {
-            const signInResult = await APISignUpRequest(name, email, password);
-            if(signInResult.status === 201) {
-                props.signInHandler(true);
+            const signUpResult = await APISignUpRequest(name, email, password);
+            console.log(signUpResult.data)
+            if(signUpResult.status === 201) {
+                props.signUpHandler(true);
                 return;
             }
         } catch (e) {
             console.error(e)
         }
-
-
         const cleanUp = () => {
             setNameErrorFlag(false)
             setEmailErrorFlag(false);
@@ -128,7 +129,6 @@ function SignUpForm (props) {
                     onChange={(e) => handleChangeRepeatPassword(e)}
                     helperText={repeatPasswordErrorMessage}
                 />
-
             </div>
             <div className="button-container-for-up">
                 <Button type="submit" onClick={handleChange} variant="contained" color="primary"

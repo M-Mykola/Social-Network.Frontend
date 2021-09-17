@@ -1,26 +1,22 @@
 import '../App.css';
-import Footer from "../Components/Footer_component";
 import React, {useState} from "react";
-import WelcomeSignInScreen from "../Components/WelcomeSignUpScreen";
-import SignInForm from "../Components/SignUpForm";
+import SignInForm from "../Components/SignInForm";
+import WelcomeSignIn from "./Welcome-Sign-In-Page";
 
-
-function Login() {
+function Login(props) {
     const [isSignIn, setSignInStatus] = useState(false);
-
+    const [name, setName] = useState('')
+    const pull_data = (data) => {
+        setName(data.name)
+        setSignInStatus(data.status)
+    }
     return (
         <div className="App">
             <header className="App-header">
-                <h1 className="App-heder">
-                    <a className="App-link" href="https://www.linkedin.com/">
-                        Website
-                    </a>
-                </h1>
-                {isSignIn ? <WelcomeSignInScreen/> : <SignInForm  signInHandler={setSignInStatus}/>}
-                <div className="App-Footer">
-                    <Footer/>
-                </div>
-            </header>
+                <p>
+                {isSignIn ? <WelcomeSignIn name={name}/> : <SignInForm func={pull_data}/>}
+                </p>
+                </header>
         </div>
     );
 }
