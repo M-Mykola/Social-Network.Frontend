@@ -9,5 +9,4 @@ function Error() {
         </header>
     );
 }
-
 export default Error;
