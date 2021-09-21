@@ -8,7 +8,7 @@ import axios from "axios"
             email: email,
             password: password
         },
-        method: 'post'
+        method: 'POST'
     })
 }
 export default APISignUpRequest;
