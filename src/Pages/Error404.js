@@ -1,5 +1,4 @@
 function Error() {
-
     return (
         <header className="input-container">
             <h1>

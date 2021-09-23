@@ -1,14 +1,10 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import React, {useState} from "react";
-import Validation from "../Validation/validation";
+import React, {useEffect, useState} from "react";
 import APISignUpRequest from "../API/SignUpRequest"
+import {isInvalidEmail, isInvalidName, isInvalidPassword, isInvalidRepeatPassword} from "../Validation/validation";
 
-
-
-
-function SignUpForm (props) {
-
+function SignUpForm(props) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,33 +12,89 @@ function SignUpForm (props) {
 
     const [nameErrorMessage, setNameErrorMessage] = useState("");
     const [emailErrorMessage, setEmailErrorMessage] = useState("");
-    const [passwordErrorMessage, setPasswordMessage] = useState("");
-    const [repeatPasswordErrorMessage, setRepeatPasswordMessage] = useState("");
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+    const [repeatPasswordErrorMessage, setRepeatPasswordErrorMessage] = useState("");
 
     const [emailHasError, setEmailErrorFlag] = useState(false);
     const [nameHasError, setNameErrorFlag] = useState(false);
     const [passwordHasError, setPasswordErrorFlag] = useState(false);
     const [repeatPasswordHasError, setRepeatPasswordErrorFlag] = useState(false);
 
+    const [nameDisableButton, setNameDisableButton] = useState(true)
+    const [emailDisableButton, setEmailDisableButton] = useState(true)
+    const [passwordDisableButton, setPasswordDisableButton] = useState(true)
+    const [repeatPasswordDisableButton, setRepeatPasswordDisableButton] = useState(true)
+
+    useEffect(() => {
+        if (!isInvalidName(name)) setNameDisableButton(false)
+        else setNameDisableButton(true)
+    }, [nameDisableButton, name]);
+
+    useEffect(() => {
+        if (!isInvalidEmail(email)) setEmailDisableButton(false)
+        else setEmailDisableButton(true)
+    }, [emailDisableButton, email]);
+
+    useEffect(() => {
+        if (!isInvalidPassword(password)) setPasswordDisableButton(false)
+        else setPasswordDisableButton(true)
+    }, [passwordDisableButton, password]);
+
+    useEffect(() => {
+        if (!isInvalidRepeatPassword(repeatPassword)) setRepeatPasswordDisableButton(false)
+        else setRepeatPasswordDisableButton(true)
+    }, [repeatPasswordDisableButton, repeatPassword]);
 
     const handleChangeName = (event) => {
-        setName(event.target.value)
+        const nameValidation = isInvalidName(event.target.value)
+        if (name && nameValidation) {
+            setNameErrorFlag(true);
+            setNameErrorMessage(nameValidation.errorMessage);
+        } else {
+            setNameErrorMessage('');
+            setNameErrorFlag(false);
+        }
+        setName(event.target.value);
     }
     const handleChangeEmail = (event) => {
+        const emailValidation = isInvalidEmail(event.target.value)
+        if (email && emailValidation) {
+            setEmailErrorFlag(true);
+            setEmailErrorMessage(emailValidation.errorMessage);
+        } else {
+            setEmailErrorMessage('');
+            setEmailErrorFlag(false);
+        }
         setEmail(event.target.value);
     }
     const handleChangePassword = (event) => {
+        const passwordValidation = isInvalidPassword(event.target.value)
+        if (password && passwordValidation) {
+            setPasswordErrorFlag(true);
+            setPasswordErrorMessage(passwordValidation.errorMessage);
+        } else {
+            setPasswordErrorMessage('');
+            setPasswordErrorFlag(false);
+        }
         setPassword(event.target.value);
     }
     const handleChangeRepeatPassword = (event) => {
+        const repeatPasswordValidation = isInvalidRepeatPassword(event.target.value)
+        if (repeatPassword && repeatPasswordValidation) {
+            setRepeatPasswordErrorFlag(true);
+            setRepeatPasswordErrorMessage(repeatPasswordValidation.errorMessage);
+        } else {
+            setRepeatPasswordErrorMessage('');
+            setRepeatPasswordErrorFlag(false);
+        }
         setRepeatPassword(event.target.value);
     }
+
     const handleChange = async () => {
-        const validate = Validation(name, email, password, repeatPassword)
         try {
             const signUpResult = await APISignUpRequest(name, email, password);
             console.log(signUpResult.data)
-            if(signUpResult.status === 201) {
+            if (signUpResult.status === 201) {
                 props.signUpHandler(true);
                 return;
             }
@@ -50,39 +102,21 @@ function SignUpForm (props) {
             console.error(e)
         }
         const cleanUp = () => {
-            setNameErrorFlag(false)
+            setNameErrorFlag(false);
             setEmailErrorFlag(false);
             setPasswordErrorFlag(false);
             setRepeatPasswordErrorFlag(false);
             setNameErrorMessage('');
             setEmailErrorMessage('');
-            setPasswordMessage('');
-            setRepeatPasswordMessage('');
+            setPasswordErrorMessage('');
+            setRepeatPasswordErrorMessage('');
         }
         cleanUp()
-
-        if (validate.status === "Fail") {
-            if (validate.field === 'name') {
-                setNameErrorFlag(true);
-                setNameErrorMessage(validate.errorMessage);
-            }
-            if (validate.field === 'email') {
-                setEmailErrorFlag(true);
-                setEmailErrorMessage(validate.errorMessage);
-            }
-            if (validate.field === 'password') {
-                setPasswordErrorFlag(true);
-                setPasswordMessage(validate.errorMessage);
-            }
-            if (validate.field === 'repeatPassword') {
-                setRepeatPasswordErrorFlag(true);
-                setRepeatPasswordMessage(validate.errorMessage);
-            }
-        }
     }
     return (
         <div className="main-input-container">
             <div className="input-container">
+
                 <TextField
                     error={nameHasError}
                     id="outlined-basic1"
@@ -94,6 +128,7 @@ function SignUpForm (props) {
                     onChange={(e) => handleChangeName(e)}
                 />
             </div>
+
             <div className="input-container">
                 <TextField
                     error={emailHasError}
@@ -106,6 +141,7 @@ function SignUpForm (props) {
                     onChange={(e) => handleChangeEmail(e)}
                 />
             </div>
+
             <div className="input-container">
                 <TextField
                     error={passwordHasError}
@@ -118,6 +154,7 @@ function SignUpForm (props) {
                     helperText={passwordErrorMessage}
                 />
             </div>
+
             <div className="input-container">
                 <TextField
                     error={repeatPasswordHasError}
@@ -130,12 +167,15 @@ function SignUpForm (props) {
                     helperText={repeatPasswordErrorMessage}
                 />
             </div>
+
             <div className="button-container-for-up">
                 <Button type="submit" onClick={handleChange} variant="contained" color="primary"
-                        href="#contained-buttons">
+                        href="#contained-buttons"
+                        disabled={nameDisableButton + emailDisableButton + passwordDisableButton + repeatPasswordDisableButton}>
                     Register
                 </Button>
             </div>
+
         </div>
     )
 }
