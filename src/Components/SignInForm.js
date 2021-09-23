@@ -1,13 +1,11 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Validation from "../Validation/validation";
 import APISignInRequest from "../API/SignInRequest"
 
 function SignInForm(props) {
-
     let name;
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -23,7 +21,6 @@ function SignInForm(props) {
     const handleChangePassword = (event) => {
         setPassword(event.target.value)
     }
-
     const SignInHandleChange = async () => {
         const validate = Validation(email, password)
         console.log(validate)
@@ -31,8 +28,7 @@ function SignInForm(props) {
             const signInResult = await APISignInRequest(email, password);
             console.log(signInResult.status)
             if (signInResult.status === 200) {
-                name = signInResult.data.user.name
-                props.func({ status: true, name })
+                props.func({ status: true, data: signInResult.data ,})
                 return
             }
 
@@ -61,7 +57,7 @@ function SignInForm(props) {
         <div className="main-input-container">
             <div className="input-container">
                 <TextField
-                    error={emailHasError}
+                    // error={emailHasError}
                     id="outlined-basic1"
                     label="Email"
                     type="email"
@@ -69,8 +65,7 @@ function SignInForm(props) {
                     variant="outlined"
                     name="emailInput"
                     onChange={(e) => handleChangeEmail(e)}
-                    helperText={emailErrorMessage}
-
+                    // helperText={emailErrorMessage}
                 />
             </div>
             <div className="input-container">
