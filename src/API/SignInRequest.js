@@ -7,7 +7,7 @@ const APISignInRequest = async(email,password) =>{
             email: email,
             password: password
         },
-        method: 'post'
+        method: 'POST'
     })
 }
 export default APISignInRequest;

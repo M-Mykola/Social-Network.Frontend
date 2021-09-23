@@ -2,6 +2,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import React, {useState, useEffect} from "react";
 import {isInvalidPassword, isInvalidEmail} from "../Validation/validation";
+
 import APISignInRequest from "../API/SignInRequest"
 
 function SignInForm(props) {
@@ -38,8 +39,7 @@ function SignInForm(props) {
 
         setPassword(event.target.value)
     }
-
-    const SignInHandleChange = async () => {
+const SignInHandleChange = async () => {
         try {
             const signInResult = await APISignInRequest(email, password);
             console.log(signInResult.status)
@@ -73,7 +73,7 @@ function SignInForm(props) {
 
     return (
         <div className="main-input-container">
-            <div className="input-container">
+              <div className="input-container">
                 <TextField
                     error={emailHasError}
                     id="outlined-basic1"
