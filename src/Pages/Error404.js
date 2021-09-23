@@ -1,12 +1,10 @@
 function Error() {
 
     return (
-        <header className="input-container">
-            <h1>
-                404 Error.
-                Page not found
-            </h1>
-        </header>
+        <div className="input-container">           
+                <p>404 Error.</p>
+                <p>Page not found</p>
+        </div>
     );
 }
 export default Error;
