@@ -44,8 +44,7 @@ function SignInForm(props) {
             const signInResult = await APISignInRequest(email, password);
             console.log(signInResult.status)
             if (signInResult.status === 200) {
-                name = signInResult.data.user.name
-                props.func({status: true, name})
+                props.func({ status: true, data: signInResult.data ,})
                 return
             }
         } catch (e) {
