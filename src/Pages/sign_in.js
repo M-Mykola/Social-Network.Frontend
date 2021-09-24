@@ -12,8 +12,6 @@ function Login(props) {
     const [id, setId] = useState('')
 
     const pull_data = (data) => {
-        console.log("data",data.data.user)
-        console.log(data.data.user.friends)
         setName(data.data.user.name)
         setEmail(data.data.user.email)
         setFriends(data.data.user.friends)
