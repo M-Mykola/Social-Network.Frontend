@@ -26,7 +26,7 @@ function Admin(props) {
         }
     }
     return (
-        <div className="home-text-header">
+        <div >
             <header>
                 <Button onClick={GetAllUser}>All User</Button>
             </header>
