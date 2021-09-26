@@ -78,6 +78,7 @@ function SignUpForm(props) {
         }
         setPassword(event.target.value);
     }
+
     const handleChangeRepeatPassword = (event) => {
         const repeatPasswordValidation = isInvalidRepeatPassword(event.target.value)
         if (repeatPassword && repeatPasswordValidation) {
