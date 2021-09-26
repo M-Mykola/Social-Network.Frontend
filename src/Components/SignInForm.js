@@ -4,8 +4,9 @@ import React, {useState, useEffect} from "react";
 import {isInvalidPassword, isInvalidEmail} from "../Validation/validation";
 import APISignInRequest from "../API/SignInRequest"
 
+
+
 function SignInForm(props) {
-    let name;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailErrorMessage, setEmailErrorMessage] = useState("");

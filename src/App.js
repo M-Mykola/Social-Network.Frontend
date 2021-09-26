@@ -7,8 +7,11 @@ import Home from "./Pages/home"
 import Login from './Pages/sign_in'
 import Register from './Pages/sign_up'
 import WelcomeSignIn from "./Pages/Welcome-Sign-In-Page";
-import Error from "./Pages/Error404";
 import UserProfile from "./Pages/User-Profile"
+import Admin from "./Pages/Adnin";
+import Error from "./Pages/Error404";
+
+
 
 function App() {
     return (
@@ -20,6 +23,7 @@ function App() {
                     <Route path="/sign-up" component={Register}/>
                     <Route path="/welcome" component={WelcomeSignIn}/>
                     <Route path="/profile" component={UserProfile}/>
+                    <Route path="/admin" component={Admin}/>
                     <Route component={Error}/>
                 </Switch>
             </div>

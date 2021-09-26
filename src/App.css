@@ -1,5 +1,6 @@
+
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -157,3 +158,24 @@
   padding-bottom: 15px;
   padding-top: 15px;
 }
+.adminPage{
+  background-color: #1abc9c;
+  min-height: 100vh;
+}
+.table{
+  font-family: arial,sans-serif;
+  border-collapse: collapse;
+  font-size: calc(-15px + 3vmin);
+}
+.td, th{
+  border:1px solid #cccccc;
+  padding:8px;
+}
+.th{
+  font-weight:bold;
+  text-transform:uppercase;
+}
+.tr:nth-child(even){
+  background-color: #dddddd;
+}
+

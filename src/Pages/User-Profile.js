@@ -1,6 +1,6 @@
 import "../App.css";
 import GetUserRequest from "../API/GetUserRequest"
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 
 function UserProfile(props) {
 
@@ -25,7 +25,6 @@ function UserProfile(props) {
             console.error(e);
         }
     };
-
     return (
         <div>
             <h1>{name}</h1>
@@ -33,7 +32,6 @@ function UserProfile(props) {
             <h1>{password}</h1>
             <h1>{id}</h1>
             <h1>{friends}</h1>
-
             <button type="submit" className="button" onClick={User}> Hello User</button>
         </div>
 
