@@ -14,7 +14,6 @@ function UserProfile(props) {
         try {
             const getUser = await GetUserRequest();
             if (getUser.data) {
-                console.log("name", getUser.data.name);
                 setName(getUser.data.name);
                 setEmail(getUser.data.email);
                 setFriends(getUser.data.friends);
