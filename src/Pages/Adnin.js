@@ -3,44 +3,45 @@ import React, {useEffect, useState} from "react";
 import GetAllUserRequest from "../API/GetAllUserRequest";
 import {Button} from "@material-ui/core";
 
-function Admin(props) {
-    const GetAllUser = async (props) => {
+function Admin() {
+
+    const [users, setUsers] = useState([]);
+
+
+    const getAllUser = async () => {
         try {
             const getAll = await GetAllUserRequest()
-            console.log(getAll.data)
-
-            window.onload = () => {
-                loadTheTable("tableData")
-            }
             loadTheTable(getAll)
+
             function loadTheTable(getAll) {
-                const tableBody = document.getElementById('tableData')
-                let dataHtml = '';
-                for (let person of getAll.data) {
-                    dataHtml += `<tr><td>${person.name}</td><td>${person.email}</td></tr>`
-                }
-                tableBody.innerHTML = dataHtml;
+                setUsers(getAll.data)
+
             }
         } catch (e) {
             console.error(e)
         }
     }
+    useEffect(async () => {
+        await getAllUser()
+    }, [getAllUser, users])
     return (
-        <div >
-            <header>
-                <Button onClick={GetAllUser}>All User</Button>
-            </header>
+        <div>
             <table className="table">
                 <thead>
-                     <tr className="tr">
+                <tr className="tr">
                     <th className="th">Name</th>
                     <th>Email</th>
-                     </tr>
+                </tr>
                 </thead>
-                <tbody className="th" id="tableData">
+                <tbody>
+                {users.map((item, index) => <tr>
+                    <td>{item.name}</td>
+                    <td>{item.email}</td>
+                </tr>)}
                 </tbody>
             </table>
         </div>
     )
 }
+
 export default Admin;
