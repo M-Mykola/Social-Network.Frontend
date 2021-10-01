@@ -1,38 +1,31 @@
 import '../App.css';
 import React, {useEffect, useState,} from "react";
 import * as ReactRouterDOM from 'react-router-dom'
-import GetAllUserRequest from "../API/GetAllUserRequest";
-import DeleteUser from "../API/DeleteUser";
+import {DeleteUser, GetAllUserRequest} from "../API/ApiRequest";
 import {Button} from "@material-ui/core";
 
 const {
     Link,
 } = ReactRouterDOM;
 
-function Admin(props) {
+function Admin() {
     const [users, setUsers] = useState([]);
 
     const deleteOne = (id) => {
-        console.log(id)
         if (id) DeleteUser(id)
     }
 
     const getAllUser = async () => {
         try {
             const getAll = await GetAllUserRequest()
-            loadTheTable(getAll)
-
-            function loadTheTable(getAll) {
-                setUsers(getAll.data)
-            }
+            setUsers(getAll.data)
         } catch (e) {
             console.error(e)
         }
     }
     useEffect(async () => {
-        if (users.count)
-            return
-        else await getAllUser()
+        if (users.count) return;
+        await getAllUser()
     }, [getAllUser, users])
 
     return (

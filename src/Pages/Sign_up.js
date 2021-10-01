@@ -4,6 +4,7 @@ import Footer from "../Components/Footer_component";
 
 import SignUpForm from "../Components/SignUpForm";
 import WelcomeSignUpScreen from "../Components/WelcomeSignUpScreen";
+
 function Register() {
     const [isSignUp, setSignUpStatus] = useState(false);
     return (
@@ -14,7 +15,7 @@ function Register() {
                         Website
                     </a>
                 </h1>
-                {isSignUp ? <WelcomeSignUpScreen/> : <SignUpForm  signUpHandler={setSignUpStatus}/>}
+                {isSignUp ? <WelcomeSignUpScreen/> : <SignUpForm signUpHandler={setSignUpStatus}/>}
                 <div className="App-Footer">
                     <Footer/>
                 </div>

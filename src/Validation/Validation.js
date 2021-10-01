@@ -11,7 +11,7 @@ export const isInvalidPassword = (password) => {
     if (password.length <= 5) return {errorMessage: "Password is not correct,the password must have minimum 5 letters"}
     return null
 }
-export const isInvalidRepeatPassword = (repeatPassword) =>{
+export const isInvalidRepeatPassword = (repeatPassword) => {
     if (!repeatPassword) return {errorMessage: "Password and confirm password must be the same!"}
     return null
 }
