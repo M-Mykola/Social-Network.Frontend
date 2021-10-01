@@ -6,6 +6,7 @@ import {APISignInRequest} from "../API/ApiRequest"
 
 function SignInForm(props) {
 
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailErrorMessage, setEmailErrorMessage] = useState("");
@@ -58,6 +59,7 @@ function SignInForm(props) {
         }
         cleanUp()
     }
+
     useEffect(() => {
         if (!isInvalidPassword(email)) setEmailDisableButton(false)
         else setEmailDisableButton(true)
