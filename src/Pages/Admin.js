@@ -1,16 +1,22 @@
 import '../App.css';
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState,} from "react";
+import * as ReactRouterDOM from 'react-router-dom'
 import GetAllUserRequest from "../API/GetAllUserRequest";
-import {Button} from "@material-ui/core";
 import DeleteUser from "../API/DeleteUser";
+import {Button} from "@material-ui/core";
 
-function Admin() {
+const {
+    Link,
+} = ReactRouterDOM;
 
+function Admin(props) {
     const [users, setUsers] = useState([]);
+
     const deleteOne = (id) => {
         console.log(id)
         if (id) DeleteUser(id)
     }
+
     const getAllUser = async () => {
         try {
             const getAll = await GetAllUserRequest()
@@ -31,8 +37,8 @@ function Admin() {
 
     return (
         <div>
-            <table className="table">
-                <thead>
+            <table className="editUserForm">
+                <thead className="tableHead">
                 <tr>
                     <th className="th">Name</th>
                     <th className="th">Email</th>
@@ -44,8 +50,10 @@ function Admin() {
                     <td>{item.name}</td>
                     <td>{item.email}</td>
                     <td>
-                        <button onClick={() => deleteOne(item._id)}>Delete</button>
+                        <Button variant="contained" onClick={() => deleteOne(item._id)}>Delete</Button>
                     </td>
+                    <td><Button className="buttonEditUser" variant="contained"> <Link
+                        to={{pathname: "/user-info", state: {item}}}>Edit User</Link> </Button></td>
                 </tr>)}
                 </tbody>
             </table>

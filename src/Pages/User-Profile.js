@@ -1,7 +1,7 @@
 import "../App.css";
 import GetUserRequest from "../API/GetUserRequest"
 import React, { useState} from "react";
-
+import {Button} from "@material-ui/core";
 function UserProfile(props) {
 
     const [name, setName] = useState('');
@@ -25,13 +25,13 @@ function UserProfile(props) {
         }
     };
     return (
-        <div>
+        <div className="editUserForm">
             <h1>{name}</h1>
             <h1>{email}</h1>
             <h1>{password}</h1>
             <h1>{id}</h1>
             <h1>{friends}</h1>
-            <button type="submit" className="button" onClick={User}> Hello User</button>
+            <Button type="submit" variant="contained" color="primary" onClick={User}> Hello User</Button>
         </div>
 
     )

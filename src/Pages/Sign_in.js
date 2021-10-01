@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import SignInForm from "../Components/SignInForm";
 import WelcomeSignIn from "./Welcome-Sign-In-Page";
 
-function Login(props) {
+function Login() {
     const [isSignIn, setSignInStatus] = useState(false);
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')

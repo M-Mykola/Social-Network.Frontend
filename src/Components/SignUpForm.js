@@ -2,7 +2,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import React, {useEffect, useState} from "react";
 import APISignUpRequest from "../API/SignUpRequest"
-import {isInvalidEmail, isInvalidName, isInvalidPassword, isInvalidRepeatPassword} from "../Validation/validation";
+import {isInvalidEmail, isInvalidName, isInvalidPassword, isInvalidRepeatPassword} from "../Validation/Validation";
 
 function SignUpForm(props) {
     const [name, setName] = useState("");
