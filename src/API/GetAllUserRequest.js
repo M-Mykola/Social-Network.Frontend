@@ -4,8 +4,7 @@ const GetAllUserRequest = async () =>{
     return axios({
         url: 'https://app-social-network-1.herokuapp.com/user/all',
         headers: {
-            'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE0YTBlM2UwMmMxYjVlM2IwM2QxYTgyIiwiZW1haWwiOiJtYXNkZGZnYXRpa29mZiIsImlhdCI6MTYzMjc1NDE0NiwiZXhwIjoxNjMyODQwNTQ2fQ.hLqNQgdMGXlcFsbRuvo_e-4v4b0sTthTL32bywH9s_8'
-        },
+            'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE1NWYwOWNjODdkMGYwMDE2NGQ3ZmFkIiwiZW1haWwiOiJkZXZlbG9wQG5vZGVqcy5jb20iLCJpYXQiOjE2MzMwMjIxMTQsImV4cCI6MTYzMzEwODUxNH0.51F6rANCsdOnsmJ0Cb21wgDf7LaDQM8ISqWC0Vajvno'},
         method: 'GET'
     })
 }

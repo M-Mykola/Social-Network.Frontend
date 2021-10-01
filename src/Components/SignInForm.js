@@ -1,12 +1,11 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import React, {useState, useEffect} from "react";
-import {isInvalidPassword, isInvalidEmail} from "../Validation/validation";
+import {isInvalidPassword, isInvalidEmail} from "../Validation/Validation";
 import APISignInRequest from "../API/SignInRequest"
 
-
-
 function SignInForm(props) {
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailErrorMessage, setEmailErrorMessage] = useState("");
@@ -17,6 +16,7 @@ function SignInForm(props) {
     const [passwordDisableButton, setPasswordDisableButton] = useState(true)
 
     const HandleChangeEmail = (event) => {
+
         const emailValidation = isInvalidEmail(event.target.value)
         if (email && emailValidation) {
             setEmailErrorFlag(true);
@@ -27,6 +27,7 @@ function SignInForm(props) {
         }
         setEmail(event.target.value);
     }
+
     const handleChangePassword = (event) => {
         const passwordValidation = isInvalidPassword(event.target.value)
         if (password && passwordValidation) {
@@ -36,7 +37,6 @@ function SignInForm(props) {
             setPasswordMessage('');
             setPasswordErrorFlag(false);
         }
-
         setPassword(event.target.value)
     }
 
@@ -45,7 +45,7 @@ function SignInForm(props) {
             const signInResult = await APISignInRequest(email, password);
             console.log(signInResult.status)
             if (signInResult.status === 200) {
-                props.func({ status: true, data: signInResult.data ,})
+                props.func({status: true, data: signInResult.data})
                 return
             }
         } catch (e) {
@@ -59,8 +59,6 @@ function SignInForm(props) {
         }
         cleanUp()
     }
-
-
     useEffect(() => {
         if (!isInvalidPassword(email)) setEmailDisableButton(false)
         else setEmailDisableButton(true)

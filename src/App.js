@@ -3,13 +3,14 @@ import React from "react";
 import {
     BrowserRouter as Router, Switch, Route
 } from "react-router-dom";
-import Home from "./Pages/home"
-import Login from './Pages/sign_in'
-import Register from './Pages/sign_up'
+import Home from "./Pages/Home"
+import Login from './Pages/Sign_in'
+import Register from './Pages/Sign_up'
 import WelcomeSignIn from "./Pages/Welcome-Sign-In-Page";
 import UserProfile from "./Pages/User-Profile"
-import Admin from "./Pages/Adnin";
+import Admin from "./Pages/Admin";
 import Error from "./Pages/Error404";
+import UpdateUser from "./Components/EditUserForm";
 
 
 
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/welcome" component={WelcomeSignIn}/>
                     <Route path="/profile" component={UserProfile}/>
                     <Route path="/admin" component={Admin}/>
+                    <Route path="/user-info" component={UpdateUser}/>
                     <Route component={Error}/>
                 </Switch>
             </div>

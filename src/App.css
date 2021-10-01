@@ -178,4 +178,29 @@
 .tr:nth-child(even){
   background-color: #dddddd;
 }
+.inputUserEdit{
+  text-align: center;
+}
+.editUserForm{
+  padding: 15px 32px;
+  text-align: center;
+  background: #2c3668;
+  color: white;
+  font-size: 30px;
+  width: 100%;
+  height: 1500px;
+}
+.editInput{
+  width: 100%;
+  text-align: center;
+  padding-top: inherit;
+}
 
+.tableHead{
+  font-size: 25px;
+  padding:8px;
+}
+
+.buttonEditUser{
+  color:#191f3e;
+}

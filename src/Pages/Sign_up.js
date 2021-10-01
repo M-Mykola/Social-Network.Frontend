@@ -4,9 +4,7 @@ import Footer from "../Components/Footer_component";
 
 import SignUpForm from "../Components/SignUpForm";
 import WelcomeSignUpScreen from "../Components/WelcomeSignUpScreen";
-
 function Register() {
-
     const [isSignUp, setSignUpStatus] = useState(false);
     return (
         <div className="App">
