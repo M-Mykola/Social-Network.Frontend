@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import React, {useEffect, useState} from "react";
-import APISignUpRequest from "../API/SignUpRequest"
+import {APISignUpRequest} from "../API/ApiRequest"
 import {isInvalidEmail, isInvalidName, isInvalidPassword, isInvalidRepeatPassword} from "../Validation/Validation";
 
 function SignUpForm(props) {
@@ -90,11 +90,9 @@ function SignUpForm(props) {
         }
         setRepeatPassword(event.target.value);
     }
-
     const handleChange = async () => {
         try {
             const signUpResult = await APISignUpRequest(name, email, password);
-            console.log(signUpResult.data)
             if (signUpResult.status === 201) {
                 props.signUpHandler(true);
                 return;

@@ -1,15 +1,15 @@
 import "../App.css";
-import GetUserRequest from "../API/GetUserRequest"
-import React, { useState} from "react";
+import {GetUserRequest} from "../API/ApiRequest";
+import React, {useState} from "react";
 import {Button} from "@material-ui/core";
-function UserProfile(props) {
+
+function UserProfile() {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [friends, setFriends] = useState('');
     const [password, setPassword] = useState('');
     const [id, setId] = useState('');
-
     const User = async () => {
         try {
             const getUser = await GetUserRequest();

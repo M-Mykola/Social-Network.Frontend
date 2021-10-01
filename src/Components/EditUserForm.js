@@ -1,9 +1,10 @@
 import "../App.css";
-import React, {useEffect, useState} from "react";
-import EditUser from "../API/EditUser";
+import React, {useState} from "react";
+import {EditUser} from "../API/ApiRequest";
 import TextField from "@material-ui/core/TextField";
 import {isInvalidEmail, isInvalidName} from "../Validation/Validation";
 import {Button} from "@material-ui/core";
+
 
 function UpdateUser(data) {
 
@@ -41,11 +42,7 @@ function UpdateUser(data) {
 
     const update = async () => {
         try {
-            const editUser = await EditUser(name, email, user._id);
-            console.log(editUser)
-            if (editUser.data) {
-
-            }
+            await EditUser(name, email, user._id);
         } catch (e) {
             console.error(e);
         }

@@ -2,7 +2,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import React, {useState, useEffect} from "react";
 import {isInvalidPassword, isInvalidEmail} from "../Validation/Validation";
-import APISignInRequest from "../API/SignInRequest"
+import {APISignInRequest} from "../API/ApiRequest"
 
 function SignInForm(props) {
 
@@ -43,7 +43,6 @@ function SignInForm(props) {
     const SignInHandleChange = async () => {
         try {
             const signInResult = await APISignInRequest(email, password);
-            console.log(signInResult.status)
             if (signInResult.status === 200) {
                 props.func({status: true, data: signInResult.data})
                 return

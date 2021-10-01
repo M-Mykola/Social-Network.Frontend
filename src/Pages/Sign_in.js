@@ -23,9 +23,11 @@ function Login() {
         <div className="App">
             <header className="App-header">
                 <p>
-                {isSignIn ? <WelcomeSignIn name={name} email={email} friends={friends} password={password} id={id}/> : <SignInForm func={pull_data}/>}
+                    {isSignIn ?
+                        <WelcomeSignIn name={name} email={email} friends={friends} password={password} id={id}/> :
+                        <SignInForm func={pull_data}/>}
                 </p>
-                </header>
+            </header>
         </div>
     );
 }
